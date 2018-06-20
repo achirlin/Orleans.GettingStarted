@@ -148,6 +148,21 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CollOfActions.Grains\CollOfActors.Grains.csproj">
+      <Project>{a4fe4702-5d3e-499d-88af-854d2f9646eb}</Project>
+      <Name>CollOfActors.Grains</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CollOfActors.Interfaces\CollOfActors.Interfaces.csproj">
+      <Project>{f1469f1f-7674-4c55-bb83-578627b37bf8}</Project>
+      <Name>CollOfActors.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OrleansConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Orleans.CounterControl.1.5.0\build\Microsoft.Orleans.CounterControl.targets" Condition="Exists('..\packages\Microsoft.Orleans.CounterControl.1.5.0\build\Microsoft.Orleans.CounterControl.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
