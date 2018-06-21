@@ -15,7 +15,7 @@ namespace CollOfActors.Grains
 
         public override Task OnActivateAsync()
         {
-            _me = this.GrainFactory.GetGrain<IEmployee>(this.GetPrimaryKey());
+            _me = this.GrainFactory.GetGrain<IEmployee>(this.GetPrimaryKeyString());
             return base.OnActivateAsync();
         }
 
@@ -24,10 +24,13 @@ namespace CollOfActors.Grains
             return Task.FromResult(_reports);
         }
 
-        public Task AddDirectReport(IEmployee employee)
+        public Task AddEmployee(IEmployee employee)
         {
             _reports.Add(employee);
+
             employee.SetManager(this);
+            employee.Greeting(_me, "Welcome to my team!");
+
             return Task.CompletedTask;
         }
 

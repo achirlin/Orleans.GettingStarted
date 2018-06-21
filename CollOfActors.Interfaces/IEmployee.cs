@@ -3,11 +3,12 @@ using Orleans;
 
 namespace CollOfActors.Interfaces
 {
-    public interface IEmployee : IGrainWithGuidKey
+    public interface IEmployee : IGrainWithStringKey
     {
         Task<int> GetLevel();
         Task Promote(int newLevel);
         Task<IManager> GetManager();
         Task SetManager(IManager manager);
+        Task Greeting(IEmployee from, string message);
     }
 }

@@ -26,6 +26,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tutorial.CollectionOfActors", "Tutorial.CollectionOfActors", "{913F79D2-4C53-42C1-9621-F5B9E0DD6E65}"
 	ProjectSection(SolutionItems) = preProject
 		collOfActors.txt = collOfActors.txt
+		ColOfActors.result.png = ColOfActors.result.png
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollOfActors.Host", "CollOfActors.Host\CollOfActors.Host.csproj", "{19A622F2-6F3C-4972-A45F-7817199CF556}"

@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using Orleans;
 using CollOfActors.Interfaces;
+using System;
 
 namespace CollOfActors.Grains
 {
@@ -28,6 +29,14 @@ namespace CollOfActors.Grains
         public Task SetManager(IManager manager)
         {
             _manager = manager;
+            return Task.CompletedTask;
+        }
+
+        public Task Greeting(IEmployee from, string message)
+        {
+
+            Console.WriteLine("{0} said: {1}", from.GetPrimaryKeyString().ToString(), message);
+
             return Task.CompletedTask;
         }
     }

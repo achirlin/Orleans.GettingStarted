@@ -4,11 +4,11 @@ using Orleans;
 
 namespace CollOfActors.Interfaces
 {
-    public interface IManager : IGrainWithGuidKey
+    public interface IManager : IGrainWithStringKey
     {
         Task<IEmployee> AsEmployee();
         Task<List<IEmployee>> GetDirectReports();
-        Task AddDirectReport(IEmployee employee);
+        Task AddEmployee(IEmployee employee);
     }
 
 }
