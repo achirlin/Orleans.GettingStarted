@@ -9,6 +9,6 @@ namespace CollOfActors.Interfaces
         Task Promote(int newLevel);
         Task<IManager> GetManager();
         Task SetManager(IManager manager);
-        Task Greeting(IEmployee from, string message);
+        Task Greeting(GreetingData data);
     }
 }

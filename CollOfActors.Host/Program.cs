@@ -42,7 +42,7 @@ namespace CollOfActors.Host
             m1.AddEmployee(e3).Wait();
             m1.AddEmployee(e4).Wait();
 
-            var dr = m0.GetDirectReports().Result;
+            var m0Team = m0.GetDirectReports().Result;
 
 
             Console.WriteLine("Orleans Silo is running.\nPress Enter to terminate...");
