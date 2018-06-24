@@ -6,6 +6,15 @@ using Orleans.Providers;
 
 namespace Persistence.Grains
 {
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <remarks>
+	/// The state will be loaded from storage and then OnActivateAsync is called so you can be sure that the state is loaded 
+	/// when initializing your grain.
+	/// Also in case of failure:
+	/// http://dotnet.github.io/orleans/1.5/Tutorials/Declarative-Persistence.html#handling-failures-using-persistence
+	/// </remarks>
 	[StorageProvider(ProviderName = "FileStore")]
 	public class Manager : Grain<ManagerState>, IManager
 	{
@@ -20,7 +29,6 @@ namespace Persistence.Grains
 
 			// Each grain has a unique identity, also referred to as a grain key, within its type.
 			_me = this.GrainFactory.GetGrain<IEmployee>(this.GetPrimaryKeyString());
-
 			return base.OnActivateAsync();
 		}
 
