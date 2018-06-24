@@ -51,6 +51,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Grains", "Persi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Interfaces", "Persistence.Interfaces\Persistence.Interfaces.csproj", "{420CB389-582A-47FC-BE55-2502BABE3E3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Host.FileStorageProvider", "Persistence.Host.FileStorageProvider\Persistence.Host.FileStorageProvider.csproj", "{00E23BF8-6B6C-40AD-A033-9D1FD2309E68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,6 +123,10 @@ Global
 		{420CB389-582A-47FC-BE55-2502BABE3E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{420CB389-582A-47FC-BE55-2502BABE3E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{420CB389-582A-47FC-BE55-2502BABE3E3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E23BF8-6B6C-40AD-A033-9D1FD2309E68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E23BF8-6B6C-40AD-A033-9D1FD2309E68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E23BF8-6B6C-40AD-A033-9D1FD2309E68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E23BF8-6B6C-40AD-A033-9D1FD2309E68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -142,6 +148,7 @@ Global
 		{C9D7FA8D-CED0-42A6-BE76-E00E5A7605F6} = {7EE95F83-A3CC-4F9F-9D6D-B7F7A2BA90A7}
 		{48D64A44-256B-4579-9AA1-87148C9B1155} = {7EE95F83-A3CC-4F9F-9D6D-B7F7A2BA90A7}
 		{420CB389-582A-47FC-BE55-2502BABE3E3D} = {7EE95F83-A3CC-4F9F-9D6D-B7F7A2BA90A7}
+		{00E23BF8-6B6C-40AD-A033-9D1FD2309E68} = {7EE95F83-A3CC-4F9F-9D6D-B7F7A2BA90A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAABBE36-0075-4A6E-BD76-4FBB2A3A56BC}

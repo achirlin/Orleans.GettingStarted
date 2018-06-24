@@ -42,9 +42,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmployeeState.cs" />
     <Compile Include="GreetingData.cs" />
     <Compile Include="IEmployee.cs" />
     <Compile Include="IManager.cs" />
+    <Compile Include="ManagerState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

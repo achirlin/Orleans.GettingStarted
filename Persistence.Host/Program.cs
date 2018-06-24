@@ -13,33 +13,25 @@ namespace Persistence.Host
 	{
 		static void Main(string[] args)
 		{
-			// First, configure and start a local silo
-			var siloConfig = ClusterConfiguration.LocalhostPrimarySilo();
-
-			var silo = new SiloHost("TestSilo", siloConfig);
-			silo.InitializeOrleansSilo();
-			silo.StartOrleansSilo();
-
-			Console.WriteLine("Silo started.");
-
 			// Then configure and connect a client.
-			var clientConfig = ClientConfiguration.LocalhostSilo();
-			var client = new ClientBuilder().UseConfiguration(clientConfig).Build();
-			client.Connect().Wait();
+			var clientConfig = ClientConfiguration.LocalhostSilo(30000);
+			GrainClient.Initialize(clientConfig);
+
+			var factory = GrainClient.GrainFactory;
 
 			Console.WriteLine("Client connected.");
 
 			//---------------------------------------------------------------------------------------
 			// Obtain a grain, invoke message and get result
 			//---------------------------------------------------------------------------------------
-			var e0 = client.GetGrain<IEmployee>("e0");
-			var e1 = client.GetGrain<IEmployee>("e1");
-			var e2 = client.GetGrain<IEmployee>("e2");
-			var e3 = client.GetGrain<IEmployee>("e3");
-			var e4 = client.GetGrain<IEmployee>("e4");
+			var e0 = factory.GetGrain<IEmployee>("e0");
+			var e1 = factory.GetGrain<IEmployee>("e1");
+			var e2 = factory.GetGrain<IEmployee>("e2");
+			var e3 = factory.GetGrain<IEmployee>("e3");
+			var e4 = factory.GetGrain<IEmployee>("e4");
 
-			var m0 = client.GetGrain<IManager>("m0");
-			var m1 = client.GetGrain<IManager>("m1");
+			var m0 = factory.GetGrain<IManager>("m0");
+			var m1 = factory.GetGrain<IManager>("m1");
 
 			var m0e = m0.AsEmployee().Result;
 			var m1e = m1.AsEmployee().Result;
@@ -60,9 +52,6 @@ namespace Persistence.Host
 			Console.WriteLine("\nPress Enter to terminate...");
 			Console.ReadLine();
 
-			// Shut down
-			client.Close();
-			silo.ShutdownOrleansSilo();
 		}
 	}
 }

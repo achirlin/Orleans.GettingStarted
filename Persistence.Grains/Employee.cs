@@ -3,35 +3,34 @@ using Orleans;
 using Persistence.Interfaces;
 using System;
 using Orleans.Concurrency;
+using Orleans.Providers;
 
 namespace Persistence.Grains
 {
 	[Reentrant]
-	public class Employee : Grain, IEmployee
+	[StorageProvider(ProviderName = "FileStore")]
+	public class Employee : Grain<EmployeeState>, IEmployee
 	{
-		private int _level;
-		private IManager _manager;
-
 		public Task<int> GetLevel()
 		{
-			return Task.FromResult(_level);
+			return Task.FromResult(State.Level);
 		}
 
 		public Task Promote(int newLevel)
 		{
-			_level = newLevel;
-			return Task.CompletedTask;
+			State.Level = newLevel;
+			return WriteStateAsync();
 		}
 
 		public Task<IManager> GetManager()
 		{
-			return Task.FromResult(_manager);
+			return Task.FromResult(State.Manager);
 		}
 
 		public Task SetManager(IManager manager)
 		{
-			_manager = manager;
-			return Task.CompletedTask;
+			State.Manager = manager;
+			return WriteStateAsync();
 		}
 
 		public async Task Greeting(GreetingData data)

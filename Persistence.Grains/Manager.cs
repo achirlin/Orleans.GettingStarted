@@ -2,13 +2,14 @@
 using Orleans;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Orleans.Providers;
 
 namespace Persistence.Grains
 {
-	public class Manager : Grain, IManager
+	[StorageProvider(ProviderName = "FileStore")]
+	public class Manager : Grain<ManagerState>, IManager
 	{
 		private IEmployee _me;
-		private List<IEmployee> _reports = new List<IEmployee>();
 
 		public override Task OnActivateAsync()
 		{
@@ -32,12 +33,15 @@ namespace Persistence.Grains
 
 		public Task<List<IEmployee>> GetDirectReports()
 		{
-			return Task.FromResult(_reports);
+			return Task.FromResult(State.Reports);
 		}
 
 		public async Task AddEmployee(IEmployee employee)
 		{
-			_reports.Add(employee);
+			if (State.Reports == null)
+				State.Reports = new List<IEmployee>();
+
+			State.Reports.Add(employee);
 
 			await employee.SetManager(this);
 
@@ -46,12 +50,13 @@ namespace Persistence.Grains
 						From = _me.GetPrimaryKeyString(),
 						Message = "Welcome to my team!"
 			});
+
+			await WriteStateAsync();
 		}
 
 		public Task<IEmployee> AsEmployee()
 		{
 			return Task.FromResult(_me);
 		}
-
 	}
 }
